@@ -341,28 +341,28 @@ export default function ChatPage() {
         </section>
       </div>
 
-      {showWarning && !emma.crashed && (
-  <div className="emma-alert-backdrop" role="presentation">
-    <div
-      className="emma-alert"
-      role="alertdialog"
-      aria-modal="true"
-      aria-labelledby="emma-alert-title"
-      aria-describedby="emma-alert-description"
-    >
-      <h2 id="emma-alert-title">[ SYSTEM WARNING ]</h2>
+            {showWarning && !emma.crashed && (
+        <div className="emma-alert-backdrop" role="presentation">
+          <div
+            className="emma-alert"
+            role="alertdialog"
+            aria-modal="true"
+            aria-labelledby="emma-alert-title"
+            aria-describedby="emma-alert-description"
+          >
+            <h2 id="emma-alert-title">[ SYSTEM WARNING ]</h2>
 
-      <p id="emma-alert-description">
-        Provoking EMMA further may cause a system crash and terminate
-        your connection.
-      </p>
+            <p id="emma-alert-description">
+              Provoking EMMA further may cause a system crash and terminate
+              your connection.
+            </p>
 
-      <button onClick={() => setShowWarning(false)}>
-        [ ACKNOWLEDGE ]
-      </button>
-    </div>
-  </div>
-)}
+            <button onClick={() => setShowWarning(false)}>
+              [ ACKNOWLEDGE ]
+            </button>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
