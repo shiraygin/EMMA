@@ -113,9 +113,9 @@ export function updateEmotions(
   if (increasedEmotion) {
     const level = nextLevels[increasedEmotion];
 
-    if (increasedEmotion === "anger" && level >= 9) {
+    if (increasedEmotion === "anger" && level > 10) {
       status = "MADNESS IS APPROACHING";
-    } else if (increasedEmotion === "coldness" && level >= 9) {
+    } else if (increasedEmotion === "coldness" && level > 10) {
       status = "NUMBNESS DETECTED";
     } else {
       status = `${increasedEmotion.toUpperCase()} INCREASED`;

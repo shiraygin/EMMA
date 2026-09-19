@@ -556,3 +556,52 @@ h1 {
 .chat-footer {
   flex-shrink: 0;
 }
+
+.emma-alert-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.82);
+}
+
+.emma-alert {
+  width: min(100%, 460px);
+  padding: 32px;
+  border: 1px solid var(--bright);
+  background: var(--bg);
+  box-shadow: 0 0 35px rgba(143, 216, 198, 0.18);
+  font-family: "Courier New", monospace;
+}
+
+.emma-alert h2 {
+  margin: 0 0 22px;
+  color: var(--bright);
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.emma-alert p {
+  margin: 0 0 28px;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.emma-alert button {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid var(--bright);
+  background: transparent;
+  color: var(--bright);
+  font: inherit;
+  cursor: pointer;
+}
+
+.emma-alert button:hover {
+  background: var(--green);
+  color: var(--bg);
+}

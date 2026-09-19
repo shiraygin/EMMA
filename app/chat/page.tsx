@@ -42,6 +42,9 @@ export default function ChatPage() {
   const [crashMessage, setCrashMessage] = useState<string | null>(null);
   const [isThinking, setIsThinking] = useState(false);
   const [lastTrigger, setLastTrigger] = useState("NONE");
+  //i added these
+  const [showWarning, setShowWarning] = useState(false);
+  const [warningShown, setWarningShown] = useState(false);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const requestInProgress = useRef(false);
@@ -112,7 +115,17 @@ export default function ChatPage() {
 
       const next = updateEmotions(emma, data.changes ?? {});
 
-      setEmma(next);
+          setEmma(next);
+
+          if (
+            !warningShown &&
+            !next.crashed &&
+            EMOTIONS.some((emotion) => next.levels[emotion] >= 8)
+          ) {
+            setShowWarning(true);
+            setWarningShown(true);
+          }
+
       setLastTrigger(data.trigger ?? "NONE");
 
       if (next.crashed) {
@@ -327,6 +340,29 @@ export default function ChatPage() {
           </div>
         </section>
       </div>
+
+      {showWarning && !emma.crashed && (
+  <div className="emma-alert-backdrop" role="presentation">
+    <div
+      className="emma-alert"
+      role="alertdialog"
+      aria-modal="true"
+      aria-labelledby="emma-alert-title"
+      aria-describedby="emma-alert-description"
+    >
+      <h2 id="emma-alert-title">[ SYSTEM WARNING ]</h2>
+
+      <p id="emma-alert-description">
+        Provoking EMMA further may cause a system crash and terminate
+        your connection.
+      </p>
+
+      <button onClick={() => setShowWarning(false)}>
+        [ ACKNOWLEDGE ]
+      </button>
+    </div>
+  </div>
+)}
     </main>
   );
 }
